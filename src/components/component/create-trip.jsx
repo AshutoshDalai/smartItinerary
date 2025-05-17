@@ -66,15 +66,17 @@ function CreateTrip() {
     setLoading(true);
     // ai prompt with the user selected location, noOfDays, budget, traveler
     const FINAL_PROMPT = AI_PROMPT
-    // replace these with user given value
-      .replace("{location}",formData?.location?.label)
+      // replace these with user given value
+      .replace("{location}", formData?.location?.label)
       .replace("{totalDays}", formData?.noOfDays)
       .replace("{budget}", formData?.budget)
       .replace("{traveler}", formData?.traveler);
     const result = await chatSession.sendMessage(FINAL_PROMPT);
 
     setLoading(false);
-    saveAiTrip(result?.response?.text());
+    const responseText = await result?.response?.text();
+    saveAiTrip(responseText);
+
   };
 
   const saveAiTrip = async (tripData) => {
@@ -93,14 +95,14 @@ function CreateTrip() {
 
   const GetUserProfile = (tokenInfo) => {
     axios.get(
-        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.access_token}`,
-        {
-          headers: {
-            Authorization: `Bearer ${tokenInfo?.access_token}`,
-            Accept: "Application/json",
-          },
-        }
-      )
+      `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.access_token}`,
+      {
+        headers: {
+          Authorization: `Bearer ${tokenInfo?.access_token}`,
+          Accept: "Application/json",
+        },
+      }
+    )
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data));
         setOpenDialog(false);

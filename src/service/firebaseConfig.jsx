@@ -3,12 +3,12 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
-    authDomain: "travel-planner-438a0.firebaseapp.com",
-    projectId: "travel-planner-438a0",
-    storageBucket: "travel-planner-438a0.appspot.com",
-    messagingSenderId: "1007281510870",
-    appId: "1:1007281510870:web:9f2b70c3cae43193a0ac77",
-    measurementId: "G-CF99R5NME5"
+    authDomain: "itinerary-planner-7e1e3.firebaseapp.com",
+    projectId: "itinerary-planner-7e1e3",
+    storageBucket: "itinerary-planner-7e1e3.firebasestorage.app",
+    messagingSenderId: "926515591077",
+    appId: "1:926515591077:web:d7e4a90b546f5029111a4c",
+    measurementId: "G-H959H1BT1Z"
   };
 
 // Initialize Firebase
